@@ -1,15 +1,15 @@
-// redux toolkit----
 import { useSelector,useDispatch } from "react-redux";
-import { increment,decrement } from "./counterSlice";
+import { colorChange } from "./colorSlice";
 const App=()=>{
-    const mycount=useSelector(state=>state.mycounter.count);
+    const ourcolor=useSelector(state=>state.mycolor.color);
     const dispatch=useDispatch();
     return(
         <>
         <h1>Welcome to my App</h1>
-        <button onClick={()=>{dispatch(increment())}}>Increment</button>
-        <h1>Count:{mycount}</h1>
-        <button onClick={()=>{dispatch(decrement())}}>Decrement</button>
+        <button onClick={()=>{dispatch(colorChange())}}>Change</button>
+        <div style={{width:"500px",height:"300px",backgroundColor:ourcolor}}>
+
+        </div>
         </>
     )
 }
