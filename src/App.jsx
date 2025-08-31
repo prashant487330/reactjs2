@@ -1,3 +1,4 @@
+// color change program using redux toolkit---
 import { useSelector,useDispatch } from "react-redux";
 import { colorChange } from "./colorSlice";
 const App=()=>{

@@ -9,7 +9,6 @@ const colorSlice=createSlice({
            state.color="red";
         }
     }
-
 })
 export const {colorChange}=colorSlice.actions;
 export default colorSlice.reducer;
