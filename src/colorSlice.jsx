@@ -5,8 +5,11 @@ const colorSlice=createSlice({
         color:"green"
     },
     reducers:{
-        colorChange:(state)=>{
-           state.color="red";
+        colorChange:(state,actions)=>{
+        //    state.color="red";
+        console.log(actions)
+        console.log(actions.payload)
+        state.color=actions.payload;
         }
     }
 })
