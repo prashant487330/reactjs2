@@ -1,22 +1,18 @@
-// color change program using redux toolkit---
-import { useSelector,useDispatch } from "react-redux";
-import { colorChange } from "./colorSlice";
 import { useState } from "react";
+import { useSelector,useDispatch } from "react-redux";
+import {addTask} from "./todoSlice";
 const App=()=>{
-    const [txtval,setTxtVal]=useState("")
-    const ourcolor=useSelector(state=>state.mycolor.color);
+    const[txtval,setTxtVal]=useState("");
+    const myTask=useSelector(state=>state.mytodo.task);
     const dispatch=useDispatch();
+    
+    console.log(myTask);
     return(
         <>
-
-        
-        <h1>Welcome to my App</h1>
-        Enter Color: <input type="text" onChange={(e)=>{setTxtVal(e.target.value)}} />
-        <br />
-        <button onClick={()=>{dispatch(colorChange(txtval))}}>Change</button>
-        <div style={{width:"500px",height:"300px",backgroundColor:ourcolor}}>
-
-        </div>
+        <h1>TO DO APP:-</h1>
+        <hr />
+        Enter Your Task : <input type="text" value={txtval} onChange={(e)=>{setTxtVal(e.target.value)}} />
+        <button onClick={()=>{dispatch(addTask({id:Date.now(),work:txtval}))}}>Add Task</button>
         </>
     )
 }
