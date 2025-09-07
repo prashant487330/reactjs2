@@ -11,7 +11,7 @@ const todoSlice=createSlice({
         },
         taskDelete:(state,actions)=>{
             console.log(actions.payload.id)
-            state.task=state.task.filter(item=>item.id=actions.payload.id)
+            state.task=state.task.filter(item=>item.id!=actions.payload.id)
         },
         taskComplete:(state,actions)=>{
             for(var i=0;i<state.task.length;i++)
@@ -30,8 +30,15 @@ const todoSlice=createSlice({
                     state.task[i].status=false;
                 }
             }
+        },
+        editTaskSave:(state,actions)=>{
+            for(var i=0;i<state.task.length;i++){
+                if(state.task[i].id==actions.payload.id){
+                    state.task[i].work=actions.payload.newTask;
+                }
+            }
         }
     }
 })
-export const{addTask,taskDelete,taskComplete,taskInComplete}=todoSlice.actions;
+export const{addTask,taskDelete,taskComplete,taskInComplete,editTaskSave}=todoSlice.actions;
 export default todoSlice.reducer;
